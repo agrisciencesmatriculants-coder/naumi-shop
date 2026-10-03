@@ -96,7 +96,7 @@ function CloudStatusChip() {
   const meta = {
     off: { dot: '#7A6B59', label: 'Cloud: OFF — browser-only (keys missing in this build)' },
     checking: { dot: '#D4AF37', label: 'Cloud: checking…' },
-    connected: { dot: '#2D8659', label: 'Cloud: CONNECTED — Supabase live' },
+    connected: { dot: '#2D8659', label: 'Cloud: CONNECTED — database live' },
     'no-session': { dot: '#D4AF37', label: 'Cloud: keys found, no cloud session — sign out & in again' },
   }[state];
 
