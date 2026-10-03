@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Elegant line illustration: shopping bag with crown (berry + gold strokes) -->
+  <!-- bag body -->
+  <path d="M52 96 L188 96 L176 204 C175 210 170 214 164 214 L76 214 C70 214 65 210 64 204 Z"
+        stroke="#211B16" stroke-width="5"/>
+  <!-- bag fold -->
+  <path d="M52 96 L188 96" stroke="#211B16" stroke-width="5"/>
+  <!-- handles -->
+  <path d="M86 96 C86 62 154 62 154 96" stroke="#D4AF37" stroke-width="5" fill="none"/>
+  <!-- crown glyph inside the bag -->
+  <path d="M86 162 L94 128 L110 146 L120 122 L130 146 L146 128 L154 162 Z"
+        stroke="#D4AF37" stroke-width="4.5" fill="rgba(212,175,55,0.08)"/>
+  <path d="M86 170 L154 170" stroke="#D4AF37" stroke-width="4.5"/>
+  <!-- crown jewels -->
+  <circle cx="94" cy="126" r="3.2" fill="#211B16" stroke="none"/>
+  <circle cx="120" cy="120" r="3.6" fill="#211B16" stroke="none"/>
+  <circle cx="146" cy="126" r="3.2" fill="#211B16" stroke="none"/>
+  <!-- sparkles -->
+  <path d="M56 44 L56 60 M48 52 L64 52" stroke="#D4AF37" stroke-width="3.5"/>
+  <path d="M192 60 L192 72 M186 66 L198 66" stroke="#211B16" stroke-width="3.5"/>
+  <path d="M178 30 L178 40 M173 35 L183 35" stroke="#D4AF37" stroke-width="3"/>
+  <circle cx="42" cy="80" r="2.6" fill="#E3D5BC" stroke="none"/>
+  <circle cx="202" cy="92" r="2.6" fill="#E3D5BC" stroke="none"/>
+</svg>
