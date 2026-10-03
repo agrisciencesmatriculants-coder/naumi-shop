@@ -1,0 +1,48 @@
+# NaumiCrowns robots.txt
+# https://naumicrowns.young-agripreneurs.com/
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /checkout
+Disallow: /payment
+Disallow: /thank-you
+Disallow: /*.json$
+
+# AI / LLM crawlers — explicitly allowed so ChatGPT, Perplexity, Claude, Google SGE can index you
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://naumicrowns.young-agripreneurs.com/sitemap.xml
