@@ -1,0 +1,360 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 5.9% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* ===== NaumiCrowns locked palette (design.md §3) ===== */
+    --nc-berry: #211B16;
+    --nc-berry-deep: #151110;
+    --nc-plum: #17120E;
+    --nc-charcoal: #3B332B;
+    --nc-rose-mid: #A9812F;
+    --nc-rose-petal: #E3D5BC;
+    --nc-rose-deep: #7A6B59;
+    --nc-blush: #F4EEDF;
+    --nc-porcelain: #FBF8F1;
+    --nc-gold: #D4AF37;
+    --nc-gold-soft: #F2E9CF;
+    --nc-success: #2D8659;
+    --nc-shadow-pink: 0 10px 40px rgba(33, 27, 22, 0.14);
+    --nc-shadow-soft: 0 4px 20px rgba(211, 190, 145, 0.28);
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-porcelain text-charcoal;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+  }
+  button, a {
+    touch-action: manipulation;
+  }
+  :focus-visible {
+    outline: 2px solid var(--nc-berry);
+    outline-offset: 2px;
+  }
+  /* Fixed overlays position relative to the 480px app column, not the viewport */
+  @media (min-width: 520px) {
+    body {
+      background: linear-gradient(135deg, #F6F0E4 0%, #FBF8F1 50%, #F4EEDF 100%);
+    }
+    .app-shell {
+      box-shadow: 0 0 80px rgba(33,27,22, 0.22);
+      min-height: 100vh;
+    }
+  }
+  /* Custom scrollbar (ported from approved page) */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--nc-porcelain); }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--nc-rose-petal), var(--nc-berry));
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--nc-berry), var(--nc-berry-deep));
+  }
+}
+
+@layer components {
+  /* ===== Phone-app shell: 480px column on every screen size (design.md §5) ===== */
+  .app-shell {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--nc-porcelain);
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 84px; /* room for the fixed bottom nav */
+    min-height: 100dvh;
+  }
+
+  /* Script/accent text: Playfair Display italic */
+  .script {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Primary berry gradient pill button */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--nc-berry), var(--nc-berry-deep));
+    color: #fff;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.4s;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    box-shadow: 0 8px 25px rgba(33,27,22, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(33,27,22, 0.5);
+  }
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    color: var(--nc-berry);
+    border: 2px solid var(--nc-berry);
+    padding: 0.9rem 2.4rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.4s;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-secondary:hover {
+    background: var(--nc-berry);
+    color: #fff;
+    transform: translateY(-3px);
+  }
+
+  /* Section title block (eyebrow + h2 with gold underline) */
+  .section-title {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    position: relative;
+  }
+  .section-title .eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--nc-rose-mid);
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .section-title h2 {
+    font-size: 1.85rem;
+    color: var(--nc-berry);
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+  }
+  .section-title h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--nc-gold), transparent);
+    margin: 0.8rem auto 0;
+    border-radius: 3px;
+  }
+  .section-title p {
+    color: var(--nc-rose-deep);
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+
+  /* ===== Floating petals layer (home + thank-you only) ===== */
+  .petals-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .petal {
+    position: absolute;
+    top: -40px;
+    opacity: 0.75;
+    width: 22px;
+    height: 22px;
+    background: radial-gradient(circle at 30% 30%, var(--nc-rose-petal), var(--nc-rose-mid));
+    border-radius: 60% 40% 60% 40% / 50% 60% 40% 50%;
+    animation: petalFall linear infinite;
+    filter: drop-shadow(0 4px 6px rgba(33,27,22, 0.2));
+  }
+  .petal.s2 {
+    background: radial-gradient(circle at 30% 30%, var(--nc-blush), var(--nc-rose-petal));
+  }
+  .petal.s3 {
+    background: radial-gradient(circle at 30% 30%, var(--nc-gold-soft), var(--nc-rose-petal));
+  }
+
+  /* Footer links (white 75% → rose-petal on hover) */
+  .footer-link {
+    color: rgba(255, 255, 255, 0.75);
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .footer-link:hover {
+    color: var(--nc-rose-petal);
+    transform: translateX(4px);
+  }
+
+  /* Cursor sparkle (home only, desktop pointers) */
+  .nc-sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    animation: sparklePop 0.8s ease-out forwards;
+  }
+}
+
+/* ===== Keyframes (ported from approved page) ===== */
+@keyframes petalFall {
+  0%   { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.85; }
+  100% { transform: translateY(110vh) translateX(120px) rotate(720deg); opacity: 0; }
+}
+@keyframes sparklePop {
+  0%   { transform: scale(0) rotate(0deg); opacity: 1; }
+  100% { transform: scale(2.2) rotate(180deg); opacity: 0; }
+}
+@keyframes crownFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-4px) rotate(-3deg); }
+}
+@keyframes heroGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@keyframes floatDots {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(40px, -40px); }
+}
+@keyframes floatAround {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25%      { transform: translate(15px, -20px) rotate(5deg); }
+  50%      { transform: translate(-10px, 15px) rotate(-5deg); }
+  75%      { transform: translate(20px, 10px) rotate(3deg); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes iconBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes ripple {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+@keyframes ncBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@keyframes ncPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes typingDot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%           { transform: translateY(-8px); opacity: 1; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ===== Reduced motion guardrail (design.md §12) ===== */
+@media (prefers-reduced-motion: reduce) {
+  .petals-container, .nc-sparkle, .marquee-track, .ads-track {
+    animation: none !important;
+    display: none;
+  }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
